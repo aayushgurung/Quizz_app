@@ -1,21 +1,3 @@
-document.getElementById("start-quiz").addEventListener("click", function(event) {
-    event.preventDefault(); 
-    var questionNumber = document.getElementById("question-number").value;
-    var category = document.getElementById("trivia-category").value;
-    var difficulty = document.getElementById("difficulty").value;
-    var questionType = document.getElementById("question-type").value;
-    
-    // Perform further actions with the extracted values
-    console.log("Question Number:", questionNumber);
-    console.log("Category:", category);
-    console.log("Difficulty:", difficulty);
-    console.log("Question Type:", questionType);
-    
-    // You can use these values to make API requests or perform any other desired operations
-    
-    // Reset the form
-    document.getElementById("quiz-form").reset();
-  });
 
 let question=document.querySelector('#question');
 let quizOptions=document.querySelector('.quiz-options');
@@ -25,26 +7,55 @@ const _totalQuestion=document.getElementById('total-question');
 const _checkAnswer=document.getElementById('check-answer');
 const _playAgain=document.getElementById('play-again');
 const _result=document.getElementById('result');
+const _quizForm=document.getElementById('quiz-form');
+const _quizContainer=document.getElementById('quiz-container');
+let apiFetch="";
 
-
-
-function eventListerners(){
-    _checkAnswer.addEventListener('click',Question.checkAnswer);
-}
-document.addEventListener('DOMContentLoaded',()=>{
+document.getElementById("start-quiz").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    Question.number= document.getElementById("question-number").value;
+    Question.category= document.getElementById("trivia-category").value;
+    Question.difficulty = document.getElementById("difficulty").value;
+    Question.type= document.getElementById("question-type").value;
+    totalQuestion=Question.number;
+    console.log("Question Number:", Question.number);
+    console.log("Category:", Question.category);
+    console.log("Difficulty:", Question.difficulty);
+    console.log("Question Type:", Question.type);
+    document.getElementById("quiz-form").reset();
+    // apiFetch=`https://opentdb.com/api.php?amount=${questionNumber}&category=${category}&difficulty=${difficulty}&type=${questionType}`;
     Question.fetchQuestion();
     eventListerners();
     _totalQuestion.textContent=totalQuestion;
     _correctScore.textContent=correctScore;
+    _quizForm.style.display="none";
+    _quizContainer.style.display="block";
+
+  });
+
+function eventListerners(){
+    _checkAnswer.addEventListener('click',Question.checkAnswer);
+}
+// document.addEventListener('DOMContentLoaded',()=>{
+//     Question.fetchQuestion();
+//     eventListerners();
+//     _totalQuestion.textContent=totalQuestion;
+//     _correctScore.textContent=correctScore;
     
     
-});
+// });
 
 let Question={
+    number: 0,
+    category:"",
+    difficulty:"",
+    type:"",
     fetchQuestion:function(){
         const self=this;
         _checkAnswer.disabled=false;
-        fetch(`https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`)
+        const apiFetch=`https://opentdb.com/api.php?amount=${Question.number}&category=${Question.category}&difficulty=${Question.difficulty}&type=${Question.type}`;
+        console.log(apiFetch);
+        fetch(apiFetch)
         .then((response)=> response.json())
         .then((data)=>this.displayQuestion(data));
     },

@@ -18,12 +18,19 @@
     <div class="flex">
       <div class="wrapper">
         <div class="quiz-form">
-          <div class="quiz-title">
-            <h1>Quiz Settings</h1>
-          </div>
           <form id="quiz-form">
-            <label for="question-number">Select number of questions from 1 to 10:</label>
-            <select name="question-number" id="question-number" class="form-control qz-frm-clr" style="color:black;" >
+            <div class="quiz-title">
+              <h1>Quiz Settings</h1>
+            </div>
+            <label for="question-number"
+              >Select number of questions from 1 to 10:</label
+            >
+            <select
+              name="question-number"
+              id="question-number"
+              class="form-control qz-frm-clr"
+              style="color: black"
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -33,13 +40,16 @@
               <option value="7">7</option>
               <option value="8">8</option>
               <option value="9">9</option>
-              <option value="10">10</option>
+              <option value="10" selected>10</option>
             </select>
-            
+
             <label for="trivia-category">Select category:</label>
-            <select name="trivia-category" id="trivia-category" class="form-control qz-frm-clr">
-              <option value="any">Any Category</option>
-              <option value="9">General Knowledge</option>
+            <select
+              name="trivia-category"
+              id="trivia-category"
+              class="form-control qz-frm-clr"
+            >
+              <option value="9" selected>General Knowledge</option>
               <option value="10">Entertainment: Books</option>
               <option value="11">Entertainment: Film</option>
               <option value="12">Entertainment: Music</option>
@@ -61,44 +71,52 @@
               <option value="28">Vehicles</option>
               <option value="29">Entertainment: Comics</option>
               <option value="30">Science: Gadgets</option>
-              <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
-              <option value="32">Entertainment: Cartoon &amp; Animations</option>
+              <option value="31">
+                Entertainment: Japanese Anime &amp; Manga
+              </option>
+              <option value="32">
+                Entertainment: Cartoon &amp; Animations
+              </option>
             </select>
-            
+
             <label for="difficulty">Select Difficulty:</label>
-            <select name="difficulty" id="difficulty" class="form-control qz-frm-clr">
-              <option value="easy">Easy</option>
+            <select
+              name="difficulty"
+              id="difficulty"
+              class="form-control qz-frm-clr"
+            >
+              <option value="easy" selected>Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
-            
+
             <label for="question-type">Select Type:</label>
-            <select name="question-type" id="question-type" class="form-control qz-frm-clr">
-              <option value="multiple">Multiple Choice</option>
+            <select
+              name="question-type"
+              id="question-type"
+              class="form-control qz-frm-clr"
+            >
+              <option value="multiple" selected>Multiple Choice</option>
               <option value="boolean">True/False</option>
             </select>
-            
+
             <button type="submit" id="start-quiz">Start Quiz</button>
           </form>
         </div>
-        <div class="quiz-container">
+        <div class="quiz-container" id="quiz-container">
           <div class="quiz-head">
             <h1 class="quiz-title">Quiz Game</h1>
             <div class="quiz-score flex">
-              <span id="correct-score"></span>/<span id="total-question"
-                ></span
-              >
+              <span id="correct-score"></span>/<span id="total-question"></span>
             </div>
           </div>
           <div class="quiz-body">
             <h2 class="quiz-question" id="question">
-              Loading ...
-              <br>
+              Loading <i class="fa-solid fa-spinner fa-spin" style="color: #ffffff;"></i>
+              <br />
               <span class="category">Category</span>
             </h2>
-            <ul class="quiz-options">
-              
-            </ul>
+            <ul class="quiz-options"></ul>
             <div id="result"></div>
           </div>
           <div class="quiz-foot">
