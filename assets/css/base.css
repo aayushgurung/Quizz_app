@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+
 :root{
     --light-gray:rgb(192, 192, 192);
     --white:white;
     --green:#2d6961;
     --yellow:#f9db8e;
     --light-orange:#f9b668;
+    
     --dark-brown:#5e2d27;
 
 
 }
 body{
     font-family:'Poppins',sans-serif ;
-    min-height: 100vh;
     background-color:var(--white) ;
 
 }
@@ -30,14 +31,42 @@ body{
 .wrapper{
     background-color: var(--green);
     padding:10px 20px;
+    margin:1rem 0;
     width:600px;
-    height:600px;
+    height:max-content;
     border-radius: 10px;
     position: relative;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  color:black;
+}
+
+button[type="submit"] {
+  background-color: var(--light-orange);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.quiz-form{
+    padding:10px 20px;
+}
+#quiz-form .qz-frm-clr option{
+    color:black;
+    font-size: large;
+}
+
 .quiz-container{
     padding:10px 20px;
+    display:none;
 }
 .quiz-title{
     text-align:center;
@@ -70,18 +99,31 @@ body{
     margin: 1rem 0;
     padding:10px 20px;
     box-shadow: 1px 1px 1px 0 var(--white);
+    cursor: pointer;
 }
+
+.quiz-options li:hover span {
+    color: black;
+}
+
+
 .quiz-options li:hover{
     background-color: var(--white);
     color:black;
     box-shadow: 1px 2px 0px 0 var(--light-gray);
 }
+.quiz-options li:active{
+    transform: scale(0.98);
+
+}
 .selected{
     background-color: var(--white)!important;
-    color:black;
+    color: black !important;
     box-shadow: 1px 2px 0px 0 var(--light-gray)!important;
 }
-
+.selected span{
+    color:black !important;
+}
 .quiz-foot button{
     color:black;
     border:none;
@@ -96,6 +138,7 @@ body{
     cursor: pointer;
     display: block;
     letter-spacing: 2px;
+    background-color: whitesmoke;
 }
 .quiz-foot button:hover{
     box-shadow: 1px 2px 0px 0 var(--light-gray);
@@ -106,6 +149,12 @@ transform: scale(0.95);
 
 #play-again{
     display:none;
+}
+#result{
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
 @media (max-width:678px){
